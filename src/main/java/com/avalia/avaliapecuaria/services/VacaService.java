@@ -32,4 +32,9 @@ public class VacaService {
     public List<Vaca> getVacas() {
         return vacaRepository.findAll();
     }
+
+    public List<Vaca> createVacas(List<Vaca> vacas) {
+        List<Vaca> vacasRepo = vacaRepository.saveAll(vacas);
+        return vacasRepo;
+    }
 }

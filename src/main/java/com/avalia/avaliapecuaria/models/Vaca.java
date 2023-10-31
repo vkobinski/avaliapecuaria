@@ -27,7 +27,7 @@ public class Vaca {
     private Double scoreCorporal;
     private int scoreLocomotor;
     private int lote;
-    private LocalDate dataRegistro;
+    private String dataRegistro;
 
     @Lob
     private byte[] fotoVaca;

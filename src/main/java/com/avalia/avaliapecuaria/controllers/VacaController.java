@@ -27,12 +27,21 @@ public class VacaController {
     @PostMapping
     public ResponseEntity<Vaca> createVaca(@RequestBody Vaca vaca) {
         Optional<Vaca> vacaOp = vacaService.createVaca(vaca);
-        return vacaOp.map(value -> ResponseEntity.status(201).body(vacaOp.get()))
+        return vacaOp.map(value -> ResponseEntity.status(201).body(value))
                 .orElseGet(() -> ResponseEntity.unprocessableEntity().body(null));
     }
+
+    @PostMapping("/multiple")
+    public ResponseEntity<List<Vaca>> createVacas(@RequestBody List<Vaca> vacas) {
+        System.out.println(vacas);
+        List<Vaca> vacasRepo = vacaService.createVacas(vacas);
+        return ResponseEntity.ok(vacasRepo);
+    }
+
 
     @GetMapping
     public ResponseEntity<List<Vaca>> getVacas() {
         return ResponseEntity.ok(vacaService.getVacas());
     }
+
 }
